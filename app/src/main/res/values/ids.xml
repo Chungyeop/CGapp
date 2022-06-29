@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="watchCenter" type="id" />
+    <item name="handSecond" type="id" />
+    <item name="handMinute" type="id" />
+    <item name="handHour" type="id" />
+</resources>
