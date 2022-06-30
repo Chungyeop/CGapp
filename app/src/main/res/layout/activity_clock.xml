@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ClockActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+
     <View
         android:id="@+id/watchCenter"
         android:layout_width="10dp"
@@ -19,7 +25,7 @@
     <TextView
         android:id="@+id/number_One"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginEnd="258dp"
         android:layout_marginBottom="172dp"
         android:text="1"
@@ -33,7 +39,7 @@
     <TextView
         android:id="@+id/number_Two"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginEnd="258dp"
         android:layout_marginBottom="172dp"
         android:text="2"
@@ -47,7 +53,7 @@
     <TextView
         android:id="@+id/number_Three"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginEnd="258dp"
         android:layout_marginBottom="172dp"
         android:text="3"
@@ -61,7 +67,7 @@
     <TextView
         android:id="@+id/number_Four"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginEnd="258dp"
         android:layout_marginBottom="172dp"
         android:text="4"
@@ -75,7 +81,7 @@
     <TextView
         android:id="@+id/number_Five"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginEnd="258dp"
         android:layout_marginBottom="172dp"
         android:text="5"
@@ -89,7 +95,7 @@
     <TextView
         android:id="@+id/number_Six"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginEnd="258dp"
         android:layout_marginBottom="172dp"
         android:text="6"
@@ -103,7 +109,7 @@
     <TextView
         android:id="@+id/number_Seven"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginEnd="258dp"
         android:layout_marginBottom="172dp"
         android:text="7"
@@ -117,7 +123,7 @@
     <TextView
         android:id="@+id/number_Eight"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginEnd="258dp"
         android:layout_marginBottom="172dp"
         android:text="8"
@@ -216,4 +222,10 @@
         app:layout_constraintCircleRadius="50dp"
         app:layout_constraintCircleAngle="90"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

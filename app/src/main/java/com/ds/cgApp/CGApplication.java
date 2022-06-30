@@ -61,32 +61,32 @@ public class CGApplication extends Application {
         if (LOGD) {
             Log.d(TAG, "moveToBackGround()");
         }
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        startActivity(intent);
+        Intent backGroundIntent = new Intent(Intent.ACTION_MAIN);
+        backGroundIntent.addCategory(Intent.CATEGORY_HOME);
+        backGroundIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        backGroundIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(backGroundIntent);
     }
 
     public void moveToHome() {
         if (LOGD) {
             Log.d(TAG, "moveToHome()");
         }
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        startActivity(intent);
+        Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
+        homeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        homeIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        homeIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(homeIntent);
     }
 
     public void moveToClockMain() {
         if (LOGD) {
             Log.d(TAG, "moveToClockMain()");
         }
-        Intent intent = new Intent(getApplicationContext(), ClockMainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        startActivity(intent);
+        Intent clockMainIntent = new Intent(getApplicationContext(), ClockMainActivity.class);
+        clockMainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        clockMainIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        clockMainIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(clockMainIntent);
     }
 }

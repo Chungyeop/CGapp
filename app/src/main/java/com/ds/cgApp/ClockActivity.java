@@ -6,9 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.Calendar;
 
 public class ClockActivity extends AppCompatActivity {
 
@@ -36,18 +40,17 @@ public class ClockActivity extends AppCompatActivity {
 
         final Handler handler = new Handler() ;
         final Runnable runnable = new Runnable() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void run() {
 
-                LocalTime time = LocalTime.now() ;
-                int second = time.getSecond() ;
-                int minute = time.getMinute() ;
-                int hour = time.getHour() ;
+                Calendar time = Calendar.getInstance();
+                int second = time.get(Calendar.SECOND);
+                int minute = time.get(Calendar.MINUTE);
+                int hour = time.get(Calendar.HOUR);
 
-                System.out.println("hour    : " + hour) ;
-                System.out.println("minute  : " + minute) ;
-                System.out.println("second  : " + second) ;
+                Log.v("Log Check","Log second - " + second);
+                Log.v("Log Check","Log minute - " + minute);
+                Log.v("Log hour","Log hour - " + hour);
 
                 // Set the rotation of the view.
                 handSecond.setRotation(360 * second / 60 - 90) ;
