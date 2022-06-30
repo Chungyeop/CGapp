@@ -1,4 +1,4 @@
-package com.ds.cgapp;
+package com.ds.cgApp;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +12,6 @@ import java.time.LocalTime;
 
 public class ClockActivity extends AppCompatActivity {
 
-    private View watchCenter;
     private View handSecond = null ;
     private View handMinute = null  ;
     private View handHour = null  ;
@@ -24,7 +23,6 @@ public class ClockActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clock);
 
-        watchCenter = findViewById(R.id.watchCenter);
         handSecond = findViewById(R.id.handSecond) ;
         handMinute = findViewById(R.id.handMinute) ;
         handHour = findViewById(R.id.handHour) ;
@@ -37,7 +35,7 @@ public class ClockActivity extends AppCompatActivity {
         handHour.setPivotY(0.0f) ;
 
         final Handler handler = new Handler() ;
-        final Runnable runnalble = new Runnable() {
+        final Runnable runnable = new Runnable() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void run() {
@@ -61,7 +59,7 @@ public class ClockActivity extends AppCompatActivity {
             }
         } ;
 
-        handler.postDelayed(runnalble, 1000) ;
+        handler.postDelayed(runnable, 1000) ;
     }
 
     @Override

@@ -1,45 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.ds.cgapp">
+    package="com.ds.cgApp">
 
     <application
+        android:name=".CGApplication"
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
+        android:persistent="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.Cgapp"
-        tools:targetApi="31">
+        android:label="@string/app_name"
+        android:theme="@style/Theme.CGApp">
         <activity
-            android:name=".StopWatchActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AlarmActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ClockActivity"
-            android:exported="false" />
-        <activity
-            android:name=".GameYActivity"
-            android:exported="false" />
-        <activity
-            android:name=".GameKActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ClockMainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".HomeActivity"
+            android:name="com.ds.cgApp.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.ds.cgApp.ClockMainActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.ds.cgApp.GameYActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.ds.cgApp.GameKActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.ds.cgApp.ClockActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.ds.cgApp.StopWatchActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.ds.cgApp.AlarmActivity"
+            android:exported="false" />
     </application>
-
 </manifest>

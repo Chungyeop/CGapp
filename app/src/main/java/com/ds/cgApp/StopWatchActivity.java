@@ -1,15 +1,15 @@
-package com.ds.cgapp;
+package com.ds.cgApp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ClockMainActivity extends AppCompatActivity {
+public class StopWatchActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clock_main);
+        setContentView(R.layout.activity_stop_watch);
     }
 
     @Override

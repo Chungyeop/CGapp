@@ -1,4 +1,4 @@
-package com.ds.cgapp;
+package com.ds.cgApp;
 
 import org.junit.Test;
 
