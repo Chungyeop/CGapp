@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ds.cgApp">
 
+    <supports-screens android:largeScreens="true" android:anyDensity="true"/>
+
     <application
         android:name=".CGApplication"
         android:allowBackup="true"
