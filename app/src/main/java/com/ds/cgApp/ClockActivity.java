@@ -1,44 +1,59 @@
 package com.ds.cgApp;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.TextView;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Calendar;
 
-public class ClockActivity extends AppCompatActivity {
+public class ClockActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private View handSecond = null ;
-    private View handMinute = null  ;
-    private View handHour = null  ;
-
-
+    private Button changeBtn;
+    private View handSecond, handMinute, handHour;
+    private TextView number_One, number_Two, number_Three, number_Four, number_Five, number_Six
+            , number_Seven, number_Eight, number_Nine, number_Ten, number_Eleven, number_Twelve;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_clock);
 
-        handSecond = findViewById(R.id.handSecond) ;
-        handMinute = findViewById(R.id.handMinute) ;
-        handHour = findViewById(R.id.handHour) ;
+        number_One = findViewById(R.id.number_One);
+        number_Two = findViewById(R.id.number_Two);
+        number_Three = findViewById(R.id.number_Three);
+        number_Four = findViewById(R.id.number_Four);
+        number_Five = findViewById(R.id.number_Five);
+        number_Six = findViewById(R.id.number_Six);
+        number_Seven = findViewById(R.id.number_Seven);
+        number_Eight = findViewById(R.id.number_Eight);
+        number_Nine = findViewById(R.id.number_Nine);
+        number_Ten = findViewById(R.id.number_Ten);
+        number_Eleven = findViewById(R.id.number_Eleven);
+        number_Twelve = findViewById(R.id.number_Twelve);
 
-        handSecond.setPivotX(0.0f) ;
-        handSecond.setPivotY(0.0f) ;
-        handMinute.setPivotX(0.0f) ;
-        handMinute.setPivotY(0.0f) ;
-        handHour.setPivotX(0.0f) ;
-        handHour.setPivotY(0.0f) ;
+        handSecond = findViewById(R.id.handSecond);
+        handMinute = findViewById(R.id.handMinute);
+        handHour = findViewById(R.id.handHour);
+        changeBtn = findViewById(R.id.changeBtn);
 
-        final Handler handler = new Handler() ;
+        changeBtn.setOnClickListener(this);
+
+        /* setPivot - 회전 축을 정해주는 Method */
+        handSecond.setPivotX(0.0f);
+        handSecond.setPivotY(0.0f);
+        handMinute.setPivotX(0.0f);
+        handMinute.setPivotY(0.0f);
+        handHour.setPivotX(0.0f);
+        handHour.setPivotY(0.0f);
+
+        final Handler handler = new Handler();
         final Runnable runnable = new Runnable() {
             @Override
             public void run() {
@@ -48,21 +63,57 @@ public class ClockActivity extends AppCompatActivity {
                 int minute = time.get(Calendar.MINUTE);
                 int hour = time.get(Calendar.HOUR);
 
-                Log.v("Log Check","Log second - " + second);
-                Log.v("Log Check","Log minute - " + minute);
-                Log.v("Log hour","Log hour - " + hour);
+                Log.v("Log Check", "Log second - " + second);
+                Log.v("Log Check", "Log minute - " + minute);
+                Log.v("Log hour", "Log hour - " + hour);
 
                 // Set the rotation of the view.
-                handSecond.setRotation(360 * second / 60 - 90) ;
-                handMinute.setRotation(360 * minute / 60 - 90) ;
+                handSecond.setRotation(360 * second / 60 - 90);
+                handMinute.setRotation(360 * minute / 60 - 90);
                 // handHour.setRotation(360 * hour / 12 - 90);
-                handHour.setRotation(360 * ((hour%12)*60+minute)/(12*60) - 90) ;
+                handHour.setRotation(360 * ((hour % 12) * 60 + minute) / (12 * 60) - 90);
 
                 handler.postDelayed(this, 1000);
             }
-        } ;
+        };
+        handler.postDelayed(runnable, 1000);
+    }
 
-        handler.postDelayed(runnable, 1000) ;
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.changeBtn:
+                if (changeBtn.getText().toString().equals("ChangeR")) {
+                    changeBtn.setText("ChangeN");
+                    number_One.setText("Ⅰ");
+                    number_Two.setText("Ⅱ");
+                    number_Three.setText("Ⅲ");
+                    number_Four.setText("Ⅳ");
+                    number_Five.setText("Ⅴ");
+                    number_Six.setText("Ⅵ");
+                    number_Seven.setText("Ⅶ");
+                    number_Eight.setText("Ⅷ");
+                    number_Nine.setText("Ⅸ");
+                    number_Ten.setText("Ⅹ");
+                    number_Eleven.setText("XI");
+                    number_Twelve.setText("XII");
+                } else {
+                    changeBtn.setText("ChangeR");
+                    number_One.setText("1");
+                    number_Two.setText("2");
+                    number_Three.setText("3");
+                    number_Four.setText("4");
+                    number_Five.setText("5");
+                    number_Six.setText("6");
+                    number_Seven.setText("7");
+                    number_Eight.setText("8");
+                    number_Nine.setText("9");
+                    number_Ten.setText("10");
+                    number_Eleven.setText("11");
+                    number_Twelve.setText("12");
+                }
+                break;
+        }
     }
 
     @Override
