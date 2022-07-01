@@ -35,6 +35,10 @@
         <activity
             android:name="com.ds.cgApp.StopWatchActivity"
             android:exported="false" />
+        <service
+            android:name=".StopWatchService"
+            android:enabled="true"
+            android:exported="true" />
         <activity
             android:name="com.ds.cgApp.AlarmActivity"
             android:exported="false" />
