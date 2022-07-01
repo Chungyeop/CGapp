@@ -142,7 +142,6 @@ public class StopWatchActivity extends AppCompatActivity {
 //        Intent intent = new Intent(this,StopWatchService.class);
 //        intent.putExtra("isRunning",isRunning);
 //        startService(intent);
-
         timeThread = new Thread(new timeThread());
         timeThread.start();
     }
