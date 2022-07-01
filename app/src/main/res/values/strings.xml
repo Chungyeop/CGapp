@@ -24,8 +24,8 @@
     <string name="btn_stop">stop</string>
     <string name="stopwatch">STOPWATCH</string>
     <string name="no_alarm_setting">No Alarm Setting</string>
-    <string name="registration">registration</string>
-    <string name="cancel">cancel</string>
+    <string name="registration">Registration</string>
+    <string name="cancel">Cancel</string>
     <string name="stop_watch">Stop Watch</string>
     <string name="alarm">Alarm</string>
     <string name="clock_main">Clock Main</string>
