@@ -2,45 +2,55 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ds.cgApp">
 
-    <supports-screens android:largeScreens="true" android:anyDensity="true"/>
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true" />
 
     <application
         android:name=".CGApplication"
         android:allowBackup="true"
-        android:persistent="true"
         android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
+        android:persistent="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.CGApp">
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/btn_color" />
+
         <activity
-            android:name="com.ds.cgApp.HomeActivity"
+            android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ds.cgApp.ClockMainActivity"
+            android:name=".ClockMainActivity"
             android:exported="false" />
         <activity
-            android:name="com.ds.cgApp.GameYActivity"
+            android:name=".GameYActivity"
             android:exported="false" />
         <activity
-            android:name="com.ds.cgApp.GameKActivity"
+            android:name=".GameKActivity"
             android:exported="false" />
         <activity
-            android:name="com.ds.cgApp.ClockActivity"
+            android:name=".ClockActivity"
             android:exported="false" />
         <activity
-            android:name="com.ds.cgApp.StopWatchActivity"
+            android:name=".StopWatchActivity"
             android:exported="false" />
+
         <service
             android:name=".StopWatchService"
             android:enabled="true"
             android:exported="true" />
+
         <activity
-            android:name="com.ds.cgApp.AlarmActivity"
+            android:name=".AlarmActivity"
             android:exported="false" />
     </application>
+
 </manifest>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.wifi.aware.DiscoverySession;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,6 +32,8 @@ public class StopWatchActivity extends AppCompatActivity {
     private Button start, stop;
 
     boolean isRunning = false;
+
+    boolean runStart = false;
 
     private Thread timeThread = null;
 
@@ -86,6 +89,9 @@ public class StopWatchActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if(runStart){
+            timeThread.interrupt();
+        }
     }
 
     private Button.OnClickListener TimerOnClickListener = new View.OnClickListener() {
@@ -100,12 +106,11 @@ public class StopWatchActivity extends AppCompatActivity {
                         }
                     break;
                 case R.id.btn_stop:
-                        timeThread.interrupt();
+                        isRunning = false;
                         minute.setText("00");
                         second.setText(":00");
                         millsecond.setText(".00");
                         start.setText("start");
-                        isRunning = false;
                         start.setEnabled(true);
                         stop.setEnabled(false);
                         time = 0;
@@ -116,6 +121,20 @@ public class StopWatchActivity extends AppCompatActivity {
         }
     };
 
+    //시작
+    private void run_start() {
+        stop.setEnabled(true);
+        start.setText("pause");
+        runStart = true;
+        isRunning = true;
+//        Intent intent = new Intent(this,StopWatchService.class);        
+//        intent.putExtra("isRunning",isRunning);
+//        startService(intent);
+        timeThread = new Thread(new timeThread());
+        timeThread.start();
+    }
+
+    //일시정지
     private void run_pause() {
         start.setText("start");
         isRunning = false;
@@ -136,34 +155,27 @@ public class StopWatchActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
     }
-    private void run_start() {
-        stop.setEnabled(true);
-        start.setText("pause");
-        isRunning = true;
-//        Intent intent = new Intent(this,StopWatchService.class);
-//        intent.putExtra("isRunning",isRunning);
-//        startService(intent);
-        timeThread = new Thread(new timeThread());
-        timeThread.start();
-    }
 
     @SuppressLint("HandlerLeak")
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            int mSec = msg.arg1 % 100;
-            int sec = (msg.arg1 / 100) % 60;
-            int min = (msg.arg1 / 100) / 60;
+            //일시정지나 정지를 시켜도 한박자 늦게 추가 표기되는 것을 막기
+            if(isRunning) {
+                //시간
+                int mSec = msg.arg1 % 100;
+                int sec = (msg.arg1 / 100) % 60;
+                int min = (msg.arg1 / 100) / 60;
 
-            String Time_m = String.format("%02d",min);
-            String Time_s = String.format(":%02d",sec);
-            String Time_ms = String.format(".%02d",mSec);
-            minute.setText(Time_m);
-            second.setText(Time_s);
-            millsecond.setText(Time_ms);
+                String Time_m = String.format("%02d", min);
+                String Time_s = String.format(":%02d", sec);
+                String Time_ms = String.format(".%02d", mSec);
+                minute.setText(Time_m);
+                second.setText(Time_s);
+                millsecond.setText(Time_ms);
+            }
         }
     };
-
     class timeThread implements Runnable {
         @Override
         public void run() {
@@ -181,7 +193,6 @@ public class StopWatchActivity extends AppCompatActivity {
                     minute.setText("00");
                     second.setText(":00");
                     millsecond.setText(".00");
-                    return;
                 }
             }
         }

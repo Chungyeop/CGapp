@@ -47,7 +47,9 @@
         android:text="@string/btn_start"
         app:layout_constraintEnd_toEndOf="@+id/minute"
         app:layout_constraintStart_toStartOf="@+id/minute"
-        app:layout_constraintTop_toBottomOf="@+id/Second" />
+        app:layout_constraintTop_toBottomOf="@+id/Second"
+        android:background="@drawable/btn_color"
+        />
 
     <Button
         android:id="@+id/btn_stop"
@@ -56,7 +58,8 @@
         android:text="@string/btn_stop"
         app:layout_constraintEnd_toEndOf="@+id/millsecond"
         app:layout_constraintStart_toStartOf="@+id/millsecond"
-        app:layout_constraintTop_toTopOf="@+id/btn_start" />
+        app:layout_constraintTop_toTopOf="@+id/btn_start"
+        android:background="@drawable/btn_color"/>
 
     <LinearLayout
         android:id="@+id/linearLayout"
