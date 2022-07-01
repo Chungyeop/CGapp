@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private Button clockBtn;
+    private Button clockBtn, stopwatchBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +52,10 @@ public class HomeActivity extends AppCompatActivity {
     public void setButton() {
         /* Button Setting */
         clockBtn = findViewById(R.id.clockBtn);
-
+        stopwatchBtn = (Button) findViewById(R.id.stopwatchBtn);
         /* Button ClickListener */
         clockBtn.setOnClickListener(btnClickListener);
+        stopwatchBtn.setOnClickListener(btnClickListener);
     }
 
     /* Button ClickListener Case */
@@ -69,6 +70,14 @@ public class HomeActivity extends AppCompatActivity {
                     clockMainIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     clockMainIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(clockMainIntent);
+                    break;
+                case R.id.stopwatchBtn:
+                    Intent stopwatchIntent = new Intent(getApplicationContext(),StopWatchActivity.class);
+                    stopwatchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    stopwatchIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    stopwatchIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(stopwatchIntent);
+                    break;
             }
         }
     };

@@ -22,4 +22,5 @@
     <string name="btn_start">start</string>
     <string name="btn_pause">pause</string>
     <string name="btn_stop">stop</string>
+    <string name="stopwatch">STOPWATCH</string>
 </resources>

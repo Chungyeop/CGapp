@@ -105,6 +105,7 @@ public class StopWatchActivity extends AppCompatActivity {
                         second.setText(":00");
                         millsecond.setText(".00");
                         start.setText("start");
+                        isRunning = false;
                         start.setEnabled(true);
                         stop.setEnabled(false);
                         time = 0;
