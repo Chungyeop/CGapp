@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private Button clockBtn, stopwatchBtn;
+    private Button clockMainBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +51,9 @@ public class HomeActivity extends AppCompatActivity {
 
     public void setButton() {
         /* Button Setting */
-        clockBtn = findViewById(R.id.clockBtn);
-        stopwatchBtn = (Button) findViewById(R.id.stopwatchBtn);
+        clockMainBtn = findViewById(R.id.clockMainBtn);
         /* Button ClickListener */
-        clockBtn.setOnClickListener(btnClickListener);
-        stopwatchBtn.setOnClickListener(btnClickListener);
+        clockMainBtn.setOnClickListener(btnClickListener);
     }
 
     /* Button ClickListener Case */
@@ -64,19 +62,12 @@ public class HomeActivity extends AppCompatActivity {
         public void onClick(View view) {
             /* Button Action */
             switch(view.getId()) {
-                case R.id.clockBtn:
-                    Intent clockMainIntent = new Intent(getApplicationContext(), ClockActivity.class);
+                case R.id.clockMainBtn:
+                    Intent clockMainIntent = new Intent(getApplicationContext(), ClockMainActivity.class);
                     clockMainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     clockMainIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     clockMainIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(clockMainIntent);
-                    break;
-                case R.id.stopwatchBtn:
-                    Intent stopwatchIntent = new Intent(getApplicationContext(),StopWatchActivity.class);
-                    stopwatchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    stopwatchIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                    stopwatchIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    startActivity(stopwatchIntent);
                     break;
             }
         }

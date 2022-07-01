@@ -14,21 +14,12 @@
         android:text="Hello World!" />
 
     <Button
-        android:id="@+id/clockBtn"
+        android:id="@+id/clockMainBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:text="@string/clock" />
-
-    <Button
-        android:id="@+id/stopwatchBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="48dp"
-        android:text="@string/stopwatch" />
+        android:text="@string/clock_main" />
 
     <Button
         android:layout_width="wrap_content"
