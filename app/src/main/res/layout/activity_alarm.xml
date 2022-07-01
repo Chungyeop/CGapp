@@ -50,8 +50,7 @@
         android:textAllCaps="false"
         android:textColor="#959595"
         app:layout_constraintEnd_toStartOf="@id/guidelineC"
-        app:layout_constraintTop_toBottomOf="@id/timePicker"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@id/timePicker" />
 
     <Button
         android:id="@+id/cancelBtn"

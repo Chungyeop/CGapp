@@ -29,4 +29,7 @@
     <string name="stop_watch">Stop Watch</string>
     <string name="alarm">Alarm</string>
     <string name="clock_main">Clock Main</string>
+    <string name="notification_channel_id">Id</string>
+    <string name="notification_channel_name">Name</string>
+    <string name="notification_channel_description">Description.</string>
 </resources>
