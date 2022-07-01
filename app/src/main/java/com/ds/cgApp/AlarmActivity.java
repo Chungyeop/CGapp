@@ -147,8 +147,8 @@ public class AlarmActivity extends AppCompatActivity {
         NotificationCompat.Builder notification =
                 new NotificationCompat.Builder (this, channelId)
                         .setSmallIcon (R.mipmap.ic_launcher)  //아이콘
-                        .setContentTitle ("노티피케이션 테스트") //노티피케이션 타이틀
-                        .setContentText ("노티피케이션 테스트 중입니다.") //본문 텍스트
+                        .setContentTitle ("Test") //노티피케이션 타이틀
+                        .setContentText ("Testing") //본문 텍스트
                         .setAutoCancel (true); //사용자가 탭하면 자동으로 알림을 삭제
 
         NotificationManager notificationManager = (NotificationManager) getSystemService (Context.NOTIFICATION_SERVICE);
