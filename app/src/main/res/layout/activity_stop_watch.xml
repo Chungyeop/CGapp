@@ -6,4 +6,76 @@
     android:layout_height="match_parent"
     tools:context=".StopWatchActivity">
 
+
+    <TextView
+        android:id="@+id/minute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/minute_0"
+        android:textSize="20pt"
+        app:layout_constraintBottom_toBottomOf="@+id/Second"
+        app:layout_constraintEnd_toStartOf="@+id/Second" />
+
+    <TextView
+        android:id="@+id/Second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/second_0"
+        android:textSize="20pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/millsecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/Second"
+        android:layout_toRightOf="@id/Second"
+        android:text="@string/mill_0"
+        android:textSize="15pt"
+        app:layout_constraintBottom_toBottomOf="@+id/Second"
+        app:layout_constraintStart_toEndOf="@+id/Second" />
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/btn_start"
+        app:layout_constraintEnd_toEndOf="@+id/minute"
+        app:layout_constraintStart_toStartOf="@+id/minute"
+        app:layout_constraintTop_toBottomOf="@+id/Second" />
+
+    <Button
+        android:id="@+id/btn_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_stop"
+        app:layout_constraintEnd_toEndOf="@+id/millsecond"
+        app:layout_constraintStart_toStartOf="@+id/millsecond"
+        app:layout_constraintTop_toTopOf="@+id/btn_start" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/purple_700"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/btn_start"
+        tools:ignore="MissingConstraints" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
