@@ -16,10 +16,9 @@ import android.widget.TextView;
 import android.widget.ThemedSpinnerAdapter;
 import android.widget.Toast;
 
-public class StopWatchService extends Service {
-    private Context mContext;
+import androidx.annotation.MainThread;
 
-    private TextView minute, second, millsecond;
+public class StopWatchService extends Service {
 
     boolean isRunning = false;
 
@@ -41,39 +40,6 @@ public class StopWatchService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        showToast();
-        }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-//        isRunning = intent.getBooleanExtra("isRunning",false);
-//
-//        timeThread = new Thread(new timeThread());
-//        timeThread.start();
-//        return super.onStartCommand(intent, flags, startId);
-        mContext = getApplicationContext();
-        return flags;
-    }
-
-    void showToast() {
-            Handler handler = new Handler(Looper.getMainLooper());
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    while (time<10){
-                        time++;
-                        if(time>9){
-                            Toast.makeText(mContext, "Display your message here", Toast.LENGTH_SHORT).show();
-                        }
-                        try {
-                            Thread.sleep(100);
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
-
-                    }
-                }
-            });
     }
 
     @Override
@@ -83,37 +49,51 @@ public class StopWatchService extends Service {
         super.onDestroy();
     }
 
-    @SuppressLint("HandlerLeak")
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            int mSec = msg.arg1 % 100;
-            int sec = (msg.arg1 / 100) % 60;
-            int min = (msg.arg1 / 100) / 60;
-
-            String Time_m = String.format("%02d",min);
-            String Time_s = String.format(":%02d",sec);
-            String Time_ms = String.format(".%02d",mSec);
-            minute.setText(Time_m);
-            second.setText(Time_s);
-            millsecond.setText(Time_ms);
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        if(intent == null){
+            return Service.START_STICKY;
+        }else{
+            processCommand(intent, flags, startId);
         }
-    };
+        return super.onStartCommand(intent, flags, startId);
+    }
 
-    private class timeThread implements Runnable {
-        @Override
-        public void run() {
-            while (isRunning) { //일시정지를 누르면 멈춤
-                Message msg = new Message();
-                msg.arg1 = time++;
-                handler.sendMessage(msg);
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    return;
+    private void processCommand(Intent intent, int flags, int startId){
+        isRunning = intent.getBooleanExtra("isRunning",false);
+        Log.d(TAG,"isRunning = " + isRunning);
+        showToast();
+    }
+
+    void showToast() {
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (isRunning) {
+                    time++;
+                    Log.d(TAG, "time : == " + time);
+                    // 1초
+                    if (time == 50) {
+
+                        //Thread에서 다른 Activity에 Toast를 띄우기 위해 handler로 Toast를 감쌉니다.
+                        Handler mHandler = new Handler(Looper.getMainLooper());
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "Service",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        //1초에 종료
+                        isRunning = false;
+                    }
+                    try {
+                        Thread.sleep(100);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-        }
+        });
+        t.start();
     }
 }

@@ -127,20 +127,20 @@ public class StopWatchActivity extends AppCompatActivity {
         start.setText("pause");
         runStart = true;
         isRunning = true;
-//        Intent intent = new Intent(this,StopWatchService.class);        
-//        intent.putExtra("isRunning",isRunning);
-//        startService(intent);
         timeThread = new Thread(new timeThread());
         timeThread.start();
+        Intent intent = new Intent(this,StopWatchService.class);
+        intent.putExtra("isRunning",isRunning);
+        startService(intent);
     }
 
     //일시정지
     private void run_pause() {
         start.setText("start");
         isRunning = false;
-//        Intent intent = new Intent(this,StopWatchService.class);
-//        intent.putExtra("isRunning",isRunning);
-//        startService(intent);
+        Intent intent = new Intent(this,StopWatchService.class);
+        intent.putExtra("isRunning",isRunning);
+        startService(intent);
         timeThread = new Thread(new timeThread());
         timeThread.start();
         try {
@@ -182,9 +182,9 @@ public class StopWatchActivity extends AppCompatActivity {
             while (isRunning) { //일시정지를 누르면 멈춤
                 Message msg = new Message();
                 msg.arg1 = time++;
-//                if(time > 100){
-//                    isRunning =false;
-//                }
+                if(time > 100000){
+                    isRunning =false;
+                }
                 handler.sendMessage(msg);
                 try {
                     Thread.sleep(10);
