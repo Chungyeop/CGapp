@@ -61,7 +61,9 @@ public class StopWatchService extends Service {
 
     private void processCommand(Intent intent, int flags, int startId){
         isRunning = intent.getBooleanExtra("isRunning",false);
+        time = intent.getIntExtra("time",0);
         Log.d(TAG,"isRunning = " + isRunning);
+        Log.d(TAG,"time = " + time);
         showToast();
     }
 
@@ -73,7 +75,7 @@ public class StopWatchService extends Service {
                     time++;
                     Log.d(TAG, "time : == " + time);
                     // 1초
-                    if (time == 50) {
+                    if (time == 500) {
 
                         //Thread에서 다른 Activity에 Toast를 띄우기 위해 handler로 Toast를 감쌉니다.
                         Handler mHandler = new Handler(Looper.getMainLooper());
@@ -83,11 +85,11 @@ public class StopWatchService extends Service {
                                 Toast.makeText(getApplicationContext(), "Service",Toast.LENGTH_SHORT).show();
                             }
                         });
-                        //1초에 종료
+                        //5초에 종료
                         isRunning = false;
                     }
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(10);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
