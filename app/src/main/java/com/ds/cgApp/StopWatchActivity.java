@@ -130,6 +130,7 @@ public class StopWatchActivity extends AppCompatActivity {
         timeThread = new Thread(new timeThread());
         timeThread.start();
         Intent intent = new Intent(this,StopWatchService.class);
+        intent.putExtra("time",time);
         intent.putExtra("isRunning",isRunning);
         startService(intent);
     }
@@ -139,6 +140,7 @@ public class StopWatchActivity extends AppCompatActivity {
         start.setText("start");
         isRunning = false;
         Intent intent = new Intent(this,StopWatchService.class);
+        intent.putExtra("time",time);
         intent.putExtra("isRunning",isRunning);
         startService(intent);
         timeThread = new Thread(new timeThread());
