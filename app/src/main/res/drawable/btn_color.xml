@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false"
-        android:color="@color/white">
+    <item android:state_enabled="false" >
         <shape>
-            <solid
-                android:color="@color/btn_enable_backGround" />
             <stroke
                 android:width="1dp"
-                android:color="@color/white" />
+                android:color="@color/enable_false_color" />
             <corners
                 android:topLeftRadius="10dp"
                 android:topRightRadius="10dp"
@@ -15,8 +12,7 @@
                 android:bottomRightRadius="10dp"  />
         </shape>
     </item>
-    <item android:state_enabled="true"
-        android:color="@color/black">
+    <item android:color="@color/white" android:state_enabled="true">
         <shape>
             <stroke
                 android:width="1dp"

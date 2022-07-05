@@ -61,26 +61,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_stop"
-        android:textColor="@color/white"
+        android:textColor="@drawable/btn_textcolor"
         app:layout_constraintEnd_toEndOf="@+id/millsecond"
         app:layout_constraintStart_toStartOf="@+id/millsecond"
         app:layout_constraintTop_toTopOf="@+id/btn_start"
         android:background="@drawable/btn_color"/>
 
-    <LinearLayout
+    <View
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/white"
+        android:layout_height="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/purple_200"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/btn_start"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_start" />
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="340dp"
-        android:scrollbars="vertical"
+        android:dividerHeight="1dp"
+        android:divider="@color/purple_200"
+        android:scrollbarThumbVertical="@color/purple_200"
+        android:scrollbarSize="3dp"
+        android:fadeScrollbars="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.0"
