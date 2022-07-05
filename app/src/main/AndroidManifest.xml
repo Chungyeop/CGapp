@@ -14,12 +14,6 @@
         android:persistent="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.CGApp">
-        <activity
-            android:name=".NoNoteActivity"
-            android:exported="false" />
-        <activity
-            android:name=".YesNoteActivity"
-            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.actions"
