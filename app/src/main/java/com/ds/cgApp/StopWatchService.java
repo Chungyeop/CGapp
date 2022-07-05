@@ -67,26 +67,33 @@ public class StopWatchService extends Service {
         showToast();
     }
 
-    void showToast() {
+    private void showToast() {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
+                Handler mHandler = new Handler(Looper.getMainLooper());
                 while (isRunning) {
                     time++;
                     Log.d(TAG, "time : == " + time);
-                    // 1초
+                    // 5초
                     if (time == 500) {
-
                         //Thread에서 다른 Activity에 Toast를 띄우기 위해 handler로 Toast를 감쌉니다.
-                        Handler mHandler = new Handler(Looper.getMainLooper());
                         mHandler.post(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(getApplicationContext(), "Service",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Service 00:05.00",Toast.LENGTH_SHORT).show();
                             }
                         });
                         //5초에 종료
                         isRunning = false;
+                    }
+                    if(time==1){
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "Start",Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                     try {
                         Thread.sleep(10);

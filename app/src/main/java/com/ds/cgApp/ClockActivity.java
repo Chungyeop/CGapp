@@ -76,7 +76,8 @@ public class ClockActivity extends AppCompatActivity implements View.OnClickList
                 handler.postDelayed(this, 1000);
             }
         };
-        handler.postDelayed(runnable, 1000);
+        //딜레이가 딱히 필요업서보여서 postDelayed -> post 변경했습니다.
+        handler.post(runnable);
     }
 
     @Override

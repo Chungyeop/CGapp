@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private Button clockMainBtn;
+    private Button clockMainBtn,gameYBtn, gamekBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +52,12 @@ public class HomeActivity extends AppCompatActivity {
     public void setButton() {
         /* Button Setting */
         clockMainBtn = findViewById(R.id.clockMainBtn);
+        gameYBtn = (Button) findViewById(R.id.gameYBtn);
+        gamekBtn = (Button) findViewById(R.id.gameKBtn);
         /* Button ClickListener */
         clockMainBtn.setOnClickListener(btnClickListener);
+        gameYBtn.setOnClickListener(btnClickListener);
+        gamekBtn.setOnClickListener(btnClickListener);
     }
 
     /* Button ClickListener Case */
@@ -68,6 +72,20 @@ public class HomeActivity extends AppCompatActivity {
                     clockMainIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     clockMainIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(clockMainIntent);
+                    break;
+                case R.id.gameYBtn:
+                    Intent gameYIntent = new Intent(getApplicationContext(), GameYActivity.class);
+                    gameYIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    gameYIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    gameYIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(gameYIntent);
+                    break;
+                case R.id.gameKBtn:
+                    Intent gameKIntent = new Intent(getApplicationContext(), GameKActivity.class);
+                    gameKIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    gameKIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    gameKIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(gameKIntent);
                     break;
             }
         }

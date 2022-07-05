@@ -10,4 +10,7 @@
     <dimen name="secondHeight">2dp</dimen>
     <dimen name="minuteHeight">6dp</dimen>
     <dimen name="hourHeight">7dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="listview_textsize">17dp</dimen>
+    <dimen name="listview_padding">7dp</dimen>
 </resources>

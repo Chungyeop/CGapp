@@ -32,4 +32,5 @@
     <string name="notification_channel_id">Id</string>
     <string name="notification_channel_name">Name</string>
     <string name="notification_channel_description">Description.</string>
+    <string name="kws">KWS</string>
 </resources>
