@@ -11,7 +11,7 @@ import java.util.Calendar;
 
 public class TimePickerFragment extends DialogFragment {
 
-    // Setting Hour, Minute 전달
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -19,6 +19,6 @@ public class TimePickerFragment extends DialogFragment {
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
 
-        return new TimePickerDialog(getActivity(), (TimePickerDialog.OnTimeSetListener) getActivity(), hour, minute, DateFormat.is24HourFormat(getActivity()));
+        return new TimePickerDialog(getActivity(), android.R.style.Theme_Holo_Dialog_NoActionBar, (TimePickerDialog.OnTimeSetListener) getActivity(), hour, minute, false);
     }
 }
