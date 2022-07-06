@@ -22,37 +22,44 @@ import java.util.Calendar;
 
 public class AlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 
-    private TextView alarmSetting;
-    private Button inputBtn;
-    private Button cancelBtn;
-    private TimePicker timePicker;
-    private int hour;
-    private int minute;
-    private String hourString;
-    private String minuteString;
-    public static String transferData;
-    private NotificationHelper mNotificationHelper;
     public static final String TAG = "Alarm";
+    private TextView alarmSetting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
 
-        mNotificationHelper = new NotificationHelper(this);
+        alarmSetting = findViewById(R.id.alarmSetting);
 
-        alarmSetting = (TextView) findViewById(R.id.alarmSetting);
-        timePicker = (TimePicker) findViewById(R.id.timePicker);
+        Button settingBtn = findViewById(R.id.settingBtn);
 
-        setButton();
+        //시간 설정
+        settingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment timePicker = new TimePickerFragment();
+                timePicker.show(getSupportFragmentManager(), "time picker");
+            }
+        });
+
+        //알람 취소
+        Button cancelBtn = findViewById(R.id.cancelBtn);
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cancelAlarm();
+            }
+        });
     }
 
 
     /**
      * 시간을 정하면 호출되는 메소드
-     * @param view 화면
+     *
+     * @param view      화면
      * @param hourOfDay 시간
-     * @param minute 분
+     * @param minute    분
      */
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -73,27 +80,25 @@ public class AlarmActivity extends AppCompatActivity implements TimePickerDialog
 
     /**
      * 화면에 사용자가 선택한 시간을 보여주는 메소드
+     *
      * @param c 시간
      */
-    private void updateTimeText(Calendar c){
+    private void updateTimeText(Calendar c) {
 
         Log.d(TAG, "## updateTimeText ## ");
-        String timeText = "알람시간: ";
+        String timeText = "Alarm Time: ";
         timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
         alarmSetting.setText(timeText);
     }
 
-    /**
-     * 알람 시작
-     * @param c 시간
-     */
-    private void startAlarm(Calendar c){
+    // Setting Alarm
+    private void startAlarm(Calendar c) {
         Log.d(TAG, "## startAlarm ## ");
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
 
-        if(c.before(Calendar.getInstance())){
+        if (c.before(Calendar.getInstance())) {
             c.add(Calendar.DATE, 1);
         }
 
@@ -102,17 +107,15 @@ public class AlarmActivity extends AppCompatActivity implements TimePickerDialog
 
     }
 
-    /**
-     * 알람 취소
-     */
-    private void cancelAlarm(){
+    // Cancel Alarm
+    private void cancelAlarm() {
         Log.d(TAG, "## cancelAlarm ## ");
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
 
         alarmManager.cancel(pendingIntent);
-        alarmSetting.setText("알람 취소");
+        alarmSetting.setText("Cancel Alarm");
     }
 
     @Override
@@ -144,21 +147,13 @@ public class AlarmActivity extends AppCompatActivity implements TimePickerDialog
     protected void onDestroy() {
         super.onDestroy();
     }
+}
 
-    public void setButton() {
-        /* Button Setting */
-        inputBtn = findViewById(R.id.inputBtn);
-        cancelBtn = (Button) findViewById(R.id.cancelBtn);
-        /* Button ClickListener */
-        inputBtn.setOnClickListener(btnClickListener);
-        cancelBtn.setOnClickListener(btnClickListener);
-    }
-
-    /* Button ClickListener Case */
+    /* Button ClickListener Case *//*
     private final Button.OnClickListener btnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            /* Button Action */
+            *//* Button Action *//*
             switch (view.getId()) {
                 case R.id.inputBtn:
                     Calendar calendar = Calendar.getInstance();
@@ -201,40 +196,4 @@ public class AlarmActivity extends AppCompatActivity implements TimePickerDialog
                     break;
             }
         }
-    };
-
-    // Notification Setting
-    public void sendOnChannel(String title, String message){
-        NotificationCompat.Builder nb = mNotificationHelper.getChannelNotification(title, message);
-        mNotificationHelper.getManager().notify(1, nb.build());
-    }
-//
-//    //노티피케이션 채널 생성. 오레오버전 이후 부터 노티피케이션채널 생성 필수
-//    private void createNotificationChannel(){
-//        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
-//            String channelId = getString (R.string.notification_channel_id);
-//            String channelName = getString (R.string.notification_channel_name);
-//            String channelDes = getString (R.string.notification_channel_description);
-//            NotificationManager notificationManager = (NotificationManager) getSystemService (Context.NOTIFICATION_SERVICE);
-//            NotificationChannel notificationChannel =
-//                    new NotificationChannel (channelId //채널 ID
-//                            , channelName //채널 Name
-//                            , NotificationManager.IMPORTANCE_HIGH);//중요도 HIGH 부터 헤드업 알림
-//            notificationChannel.setDescription (channelDes);//채널설명
-//            notificationManager.createNotificationChannel (notificationChannel);
-//        }
-//    }
-//    //노티피케이션 생성
-//    private void createNotification(){
-//        String channelId = getString (R.string.notification_channel_id);
-//        NotificationCompat.Builder notification =
-//                new NotificationCompat.Builder (this, channelId)
-//                        .setSmallIcon (R.mipmap.ic_launcher)  //아이콘
-//                        .setContentTitle ("Notification") //노티피케이션 타이틀
-//                        .setContentText ("Application") //본문 텍스트
-//                        .setAutoCancel (true); //사용자가 탭하면 자동으로 알림을 삭제
-//
-//        NotificationManager notificationManager = (NotificationManager) getSystemService (Context.NOTIFICATION_SERVICE);
-//        notificationManager.notify (0, notification.build ());
-//    }
-}
+    };*/

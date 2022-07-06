@@ -40,13 +40,13 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/inputBtn"
+        android:id="@+id/settingBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/normal"
-        android:text="@string/registration"
+        android:text="@string/setting"
         android:textAllCaps="false"
         android:textColor="#959595"
         app:layout_constraintEnd_toStartOf="@id/guidelineC"

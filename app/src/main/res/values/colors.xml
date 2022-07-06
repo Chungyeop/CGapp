@@ -12,4 +12,5 @@
     <color name="enable_false_color">#959595</color>
     <color name="gray">#808099</color>
     <color name="gray_1">#808080</color>
+    <color name="primary">#9AD2FF</color>
 </resources>
