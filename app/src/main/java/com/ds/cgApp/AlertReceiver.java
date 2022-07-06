@@ -6,12 +6,13 @@ import android.content.Intent;
 
 import androidx.core.app.NotificationCompat;
 
-public class AlertReceiver extends BroadcastReceiver {
+public class AlertReceiver  extends BroadcastReceiver {
+
     @Override
-    public void onReceive(Context context, Intent intent){
-        String title = "Today Alarm";
-        String message = AlarmActivity.transferData;
+    public void onReceive(Context context, Intent intent) {
+
         NotificationHelper notificationHelper = new NotificationHelper(context);
-        NotificationCompat.Builder nb = notificationHelper.getChannelNotification(title, message);
+        NotificationCompat.Builder notificationBuilder = notificationHelper.getChannelNotification();
+        notificationHelper.getManager().notify(1, notificationBuilder.build());
     }
 }

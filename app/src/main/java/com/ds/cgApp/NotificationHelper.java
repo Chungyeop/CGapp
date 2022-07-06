@@ -12,45 +12,44 @@ import androidx.core.app.NotificationCompat;
 
 public class NotificationHelper extends ContextWrapper {
 
-    public static final String channel1ID = "channel1ID";
-    public static final String channel1Name = "channel 1";
+    public static final String noteID = "noteID";
+    public static final String noteName = "noteName";
 
-    private NotificationManager mManager;
+    private NotificationManager notifyManager;
 
     public NotificationHelper(Context base) {
         super(base);
 
-        //오레오보다 같거나 크면
+        // Android Version Oreo 이상에서는 반드시 Channel 생성 필요
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             createChannels();
         }
     }
 
-    //채널 생성
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void createChannels(){
 
-        NotificationChannel channel1 = new NotificationChannel(channel1ID, channel1Name, NotificationManager.IMPORTANCE_DEFAULT);
-        channel1.enableLights(true);
-        channel1.enableVibration(true);
-        channel1.setLightColor(R.color.backGround);
-        channel1.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+        NotificationChannel noteChannel = new NotificationChannel(noteID, noteName, NotificationManager.IMPORTANCE_DEFAULT);
+        noteChannel.enableLights(true);
+        noteChannel.enableVibration(true);
+        noteChannel.setLightColor(R.color.primary);
+        noteChannel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
 
-        getManager().createNotificationChannel(channel1);
+        getManager().createNotificationChannel(noteChannel);
     }
 
     public NotificationManager getManager(){
-        if(mManager == null) {
-            mManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if(notifyManager == null){
+            notifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         }
-        return mManager;
+        return notifyManager;
     }
 
-    public NotificationCompat.Builder getChannelNotification(String title, String message){
+    public NotificationCompat.Builder getChannelNotification(){
 
-        return new NotificationCompat.Builder(getApplicationContext(), channel1ID)
-                .setContentTitle(title)
-                .setContentText(message)
-                .setSmallIcon(R.drawable.ic_launcher_background);
+        return new NotificationCompat.Builder(getApplicationContext(), noteID)
+                .setContentTitle("Alarm")
+                .setContentText("Wake Up!")
+                .setSmallIcon(R.drawable.alarm_clock);
     }
 }
