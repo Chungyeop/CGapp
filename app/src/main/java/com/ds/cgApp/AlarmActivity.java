@@ -53,47 +53,31 @@ public class AlarmActivity extends AppCompatActivity implements TimePickerDialog
         });
     }
 
-
-    /**
-     * 시간을 정하면 호출되는 메소드
-     *
-     * @param view      화면
-     * @param hourOfDay 시간
-     * @param minute    분
-     */
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
-        Log.d(TAG, "## onTimeSet ## ");
+        Log.d(TAG, "onTimeSet()");
         Calendar c = Calendar.getInstance();
 
         c.set(Calendar.HOUR_OF_DAY, hourOfDay);
         c.set(Calendar.MINUTE, minute);
         c.set(Calendar.SECOND, 0);
 
-        //화면에 시간지정
         updateTimeText(c);
-
-        //알람설정정
         startAlarm(c);
     }
 
-    /**
-     * 화면에 사용자가 선택한 시간을 보여주는 메소드
-     *
-     * @param c 시간
-     */
     private void updateTimeText(Calendar c) {
 
-        Log.d(TAG, "## updateTimeText ## ");
-        String timeText = "Alarm Time: ";
+        Log.d(TAG, "updateTimeText()");
+        String timeText = "Setting Time - ";
         timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
         alarmSetting.setText(timeText);
     }
 
     // Setting Alarm
     private void startAlarm(Calendar c) {
-        Log.d(TAG, "## startAlarm ## ");
+        Log.d(TAG, "startAlarm()");
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
@@ -109,7 +93,7 @@ public class AlarmActivity extends AppCompatActivity implements TimePickerDialog
 
     // Cancel Alarm
     private void cancelAlarm() {
-        Log.d(TAG, "## cancelAlarm ## ");
+        Log.d(TAG, "cancelAlarm()");
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);

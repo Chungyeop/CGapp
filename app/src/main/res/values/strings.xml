@@ -23,7 +23,6 @@
     <string name="btn_pause">pause</string>
     <string name="btn_stop">stop</string>
     <string name="stopwatch">STOPWATCH</string>
-    <string name="no_alarm_setting">No Alarm Setting</string>
     <string name="registration">Registration</string>
     <string name="cancel">Cancel</string>
     <string name="stop_watch">Stop Watch</string>
@@ -34,4 +33,6 @@
     <string name="notification_channel_description">Description.</string>
     <string name="kws">KWS</string>
     <string name="setting">Setting</string>
+    <string name="alarmTitle">Alarm Setting</string>
+    <string name="click_setting_button">Click Setting Button</string>
 </resources>
