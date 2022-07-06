@@ -35,4 +35,7 @@
     <string name="setting">Setting</string>
     <string name="alarmTitle">Alarm Setting</string>
     <string name="click_setting_button">Click Setting Button</string>
+    <string name="click_clock_mod">Click Clock Mod</string>
+    <string name="click_any_mod">Click Any Mod</string>
+    <string name="clock_game_app"><![CDATA[Clock & Game App]]></string>
 </resources>
