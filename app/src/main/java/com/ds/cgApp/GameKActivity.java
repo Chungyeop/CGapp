@@ -10,6 +10,8 @@ public class GameKActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_kactivity);
+
+
     }
     @Override
     protected void onStart() {

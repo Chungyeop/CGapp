@@ -7,14 +7,26 @@
         android:largeScreens="true" />
 
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
     <application
         android:name=".CGApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:persistent="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/icon"
         android:theme="@style/Theme.CGApp">
+        <receiver
+            android:name=".TimeWidget"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/time_widget_info" />
+        </receiver>
 
         <meta-data
             android:name="com.google.android.actions"
@@ -54,8 +66,7 @@
             android:name=".AlarmActivity"
             android:exported="false" />
 
-        <receiver android:name=".AlertReceiver"/>
-
+        <receiver android:name=".AlertReceiver" />
     </application>
 
 </manifest>

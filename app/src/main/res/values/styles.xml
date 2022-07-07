@@ -32,4 +32,37 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:padding">@dimen/listview_padding</item>
     </style>
+
+    <style name="Widget.Cgapp.AppWidget.Container" parent="android:Widget">
+        <item name="android:id">@android:id/background</item>
+        <item name="android:background">?android:attr/colorBackground</item>
+    </style>
+
+    <style name="Widget.Cgapp.AppWidget.InnerView" parent="android:Widget">
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="DateTextStyle">
+        <item name="android:layerType">software</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:textScaleX">0.87</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:shadowColor">#BF000000</item>
+        <item name="android:shadowDy">1.0</item>
+        <item name="android:shadowRadius">1.0</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="TimeTextStyle">
+        <item name="android:layerType">software</item>
+        <item name="android:textSize">50dp</item>
+        <item name="android:textScaleX">0.87</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:shadowColor">#BF000000</item>
+        <item name="android:shadowDy">1.0</item>
+        <item name="android:shadowRadius">1.0</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
 </resources>
