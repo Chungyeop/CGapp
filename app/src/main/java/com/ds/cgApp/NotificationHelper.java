@@ -50,6 +50,7 @@ public class NotificationHelper extends ContextWrapper {
         return new NotificationCompat.Builder(getApplicationContext(), noteID)
                 .setContentTitle("Alarm")
                 .setContentText("Wake Up!")
+                .setVibrate(new long[]{3000, 100, 3000, 100})
                 .setSmallIcon(R.drawable.alarm_clock);
     }
 }
